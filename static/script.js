@@ -1,7 +1,9 @@
+const API_URL = "https://addnameage.onrender.com/";
+
 async function addUser() {
     const name = document.getElementById('name').value;
     const age = document.getElementById('age').value;
-    const response = await fetch('/add', {
+    const response = await fetch(`${API_URL}/add`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, age })
@@ -12,7 +14,7 @@ async function addUser() {
 }
 
 async function fetchUsers() {
-    const response = await fetch('/users');
+    const response = await fetch(`${API_URL}/users`);
     const users = await response.json();
     const userList = document.getElementById('userList');
     userList.innerHTML = '';
@@ -22,4 +24,5 @@ async function fetchUsers() {
         userList.appendChild(li);
     });
 }
+
 fetchUsers();
